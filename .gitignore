@@ -1,0 +1,10 @@
+# Exclude pcap files
+*.pcap
+
+# Exclude compiled binaries
+a.out
+reconstructed_code
+
+# Exclude temporary files
+*.tmp
+*.log
